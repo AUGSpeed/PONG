@@ -150,8 +150,8 @@ public class Board extends JPanel implements Commons {
         mod = 0;
         score++;
         
-        ball.setX((Commons.WIDTH/2)-5);
-        ball.setY((Commons.HEIGHT/2)-5);
+        ball.setX(Commons.INIT_BALL_X);
+        ball.setY(Commons.INIT_BALL_Y);
         ball.setXDir(2);
         ball.setYDir(0);
         
@@ -171,8 +171,8 @@ public class Board extends JPanel implements Commons {
         mod = 0;
         scoreW++;
         
-        ball.setX((Commons.WIDTH/2)-5);
-        ball.setY((Commons.HEIGHT/2)-5);
+        ball.setX(Commons.INIT_BALL_X);
+        ball.setY(Commons.INIT_BALL_Y);
         ball.setXDir(-2);
         ball.setYDir(0);
         
@@ -225,12 +225,12 @@ public class Board extends JPanel implements Commons {
                 ball.setYDir(-1 - mod);
             }
 
-            if (ballLPos >= second && ballLPos < third) {
+            if (ballLPos >= second && ballLPos <= third) {
                 ball.setXDir(-6 - (mod*2));
                 ball.setYDir(0);
             }
 
-            if (ballLPos >= third && ballLPos < fourth) {
+            if (ballLPos > third && ballLPos <= fourth) {
                 ball.setXDir(-3 - mod);
                 ball.setYDir(1 + mod);
             }
@@ -263,12 +263,12 @@ public class Board extends JPanel implements Commons {
                 ball.setYDir(-1 - mod);
             }
 
-            if (ballLPos >= second && ballLPos < third) {
+            if (ballLPos >= second && ballLPos <= third) {
                 ball.setXDir(6 + (mod*2));
                 ball.setYDir(0);
             }
 
-            if (ballLPos >= third && ballLPos < fourth) {
+            if (ballLPos > third && ballLPos <= fourth) {
                 ball.setXDir(3 + mod);
                 ball.setYDir(1 + mod);
             }

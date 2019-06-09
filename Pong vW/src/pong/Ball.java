@@ -37,20 +37,22 @@ public class Ball extends Sprite implements Commons {
         y += ydir;
 
         if (y <= 0) {
-            setYDir(-1.0*(getYDir()));
+        	ydir = -ydir;
             y += ydir;
         }
 
         if (y >= HEIGHT - height-25) {
-            setYDir(-1.0*(getYDir()));
+        	ydir = -ydir;
         }
 
     }
 
     private void resetState() {
 
-        x = (Commons.WIDTH/2) - 5;
-        y = (Commons.HEIGHT/2) - 5;
+    	//x = (Commons.WIDTH/2) - 5;
+        //y = (Commons.HEIGHT/2) - 5;
+        x = Commons.INIT_BALL_X;
+        y = Commons.INIT_BALL_Y;
         setWidth(20);
         setHeight(20);
     }
