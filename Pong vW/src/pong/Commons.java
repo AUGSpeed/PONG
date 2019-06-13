@@ -19,8 +19,8 @@ public interface Commons {
     public static final int INIT_PADDLE_Y = 100;
     public static final int INIT_PADDLE2_X = 928;
     public static final int INIT_PADDLE2_Y = 500;
-    public static final int INIT_BALL_X = 490;
-    public static final int INIT_BALL_Y = 365;    
+    public static final int INIT_BALL_X = 503;
+    public static final int INIT_BALL_Y = 389;    
     public static final int DELAY = 1000;
     public static final int PERIOD = 10;
 }
