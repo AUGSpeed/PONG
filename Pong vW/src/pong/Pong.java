@@ -8,21 +8,21 @@ package pong;
 
 /**
  *
- * @author Student
+ * @author AUGSpeed, Theo, Shem
  */
 
 import javax.swing.JFrame;
 
 public class Pong extends JFrame {
-
-    public Pong() {
-        
+boolean deathMode;
+    public Pong(boolean DM) {
+        deathMode = DM;
         initUI();
     }
     
     private void initUI() {
        
-        add(new Board());
+        add(new Board(deathMode));
         setTitle("Pong");
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);

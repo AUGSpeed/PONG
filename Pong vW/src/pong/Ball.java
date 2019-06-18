@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package pong;
 
 /**
  *
- * @author Student
+ * @author AUGSpeed, Theo, Shem
  */
 public class Ball extends Sprite implements Commons {
 
@@ -38,7 +34,7 @@ public class Ball extends Sprite implements Commons {
 
         if (y <= 0) {
         	ydir = -ydir;
-            y += ydir;
+                y += ydir;
         }
 
         if (y >= HEIGHT - height-25) {
@@ -49,8 +45,6 @@ public class Ball extends Sprite implements Commons {
 
     private void resetState() {
 
-    	//x = (Commons.WIDTH/2) - 5;
-        //y = (Commons.HEIGHT/2) - 5;
         x = Commons.INIT_BALL_X;
         y = Commons.INIT_BALL_Y;
         setWidth(20);
