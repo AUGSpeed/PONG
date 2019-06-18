@@ -7,4 +7,6 @@ This is the PONG game and code seen in the video made by AUGSpeed, so if you wou
 
 Link to the video where the code is explained: https://youtu.be/yb9t0RTn17E
 
+Death Mode video: https://youtu.be/7U6B54PFgYM
+
 All Open source and ready to be messed with! Figure out how things work, and change numbers, that's how I started learning how to program.
