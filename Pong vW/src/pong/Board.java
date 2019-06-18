@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package pong;
 
@@ -17,10 +13,12 @@ import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JPanel;
+import java.util.Random;
 
 public class Board extends JPanel implements Commons {
 
     private Timer timer;
+    private static final Random random = new Random();
     private String message;
     private Ball ball;
     private Paddle paddle;
@@ -30,10 +28,17 @@ public class Board extends JPanel implements Commons {
     private int scoreW = 0;
     public int win = 7;
     public double mod = 0;
+    public boolean deathMode;
+    
 
-    public Board() {
-
+    public Board(boolean DM) {
+        deathMode = DM;
         initBoard();
+    }
+    
+    public void setDM(boolean DM)
+    {
+        deathMode = DM;
     }
 
     private void initBoard() {
@@ -43,6 +48,9 @@ public class Board extends JPanel implements Commons {
 
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), DELAY, PERIOD);
+        
+        if(deathMode)
+            mod = 3;
     }
 
     @Override
@@ -60,6 +68,7 @@ public class Board extends JPanel implements Commons {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        
         this.setBackground(Color.BLACK);
         
         for (int i = 0; i < 750; i += 40)
@@ -94,14 +103,27 @@ public class Board extends JPanel implements Commons {
     }
     
     private void drawObjects(Graphics2D g2d) {
-        g2d.setColor(Color.WHITE);
+        Random rand = new Random();
+        if (deathMode == true) {
+            g2d.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)));
+        g2d.fillRect( ball.getX(), ball.getY(),
+                ball.getWidth(), ball.getHeight());
+        g2d.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)));
+        g2d.fillRect( paddle.getX(), paddle.getY(),
+                paddle.getWidth(), paddle.getHeight());
+        g2d.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)));
+        g2d.fillRect( paddleW.getX(), paddleW.getY(),
+                paddleW.getWidth(), paddleW.getHeight());
+        }
+        else {
+            g2d.setColor(Color.WHITE);
         g2d.fillRect( ball.getX(), ball.getY(),
                 ball.getWidth(), ball.getHeight());
         g2d.fillRect( paddle.getX(), paddle.getY(),
                 paddle.getWidth(), paddle.getHeight());
         g2d.fillRect( paddleW.getX(), paddleW.getY(),
                 paddleW.getWidth(), paddleW.getHeight());
-
+        }
     }
     
     private void gameFinished(Graphics2D g2d) {
@@ -147,7 +169,11 @@ public class Board extends JPanel implements Commons {
     
     private void score() {
         
-        mod = 0;
+        if(deathMode)
+            mod = 3;
+        else
+            mod = 0;
+        
         score++;
         
         ball.setX(Commons.INIT_BALL_X);
@@ -168,7 +194,11 @@ public class Board extends JPanel implements Commons {
     }
     private void scoreW() {
         
-        mod = 0;
+        if(deathMode)
+            mod = 3;
+        else
+            mod = 0;
+        
         scoreW++;
         
         ball.setX(Commons.INIT_BALL_X);
